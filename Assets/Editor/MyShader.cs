@@ -36,15 +36,32 @@ public class MyShader : ShaderGUI
         DrawLine(Color.grey, 1, 3);
         //
         GUILayout.Label("Select Effect", bigLabelStyle);
-        DrawToggle("Glow", "GLOW_ON", () => { DrawProperty(1); DrawProperty(2); });
-        DrawToggle("Negative", "NEGATIVE_ON", () => { DrawProperty(3); });
-        DrawToggle("greyscale", "GREYSCALE_ON", () => { DrawProperty(4); });
+        DrawToggle("Glow", "GLOW_ON", 1, 2);
+        DrawToggle("Negative", "NEGATIVE_ON", 3);
+        DrawToggle("greyscale", "GREYSCALE_ON", 4);
+        DrawToggle("gradient", "GRADIENT_ON", 5,15);
+        DrawToggle("radical gradient", "RADIALGRADIENT_ON", 16,21);
+        DrawToggle("pixelate", "PIXELATE_ON", 22);
+        DrawToggle("blur", "BLUR_ON", 23);
+        DrawToggle("shadow", "SHADOW_ON", 24,27);
+        DrawToggle("outline", "OUTLINE_ON", 28,30, () =>
+        {
+            MaterialProperty outline8dir = matProperties[30];
+            if (outline8dir.floatValue == 1) targetMat.EnableKeyword("OUTBASE8DIR_ON");
+            else targetMat.DisableKeyword("OUTBASE8DIR_ON");
+        });
+        DrawToggle("wave", "WAVEUV_ON", 31, 35);
+        DrawToggle("offset", "OFFSETUV_ON", 36,37);
+        DrawToggle("sine wave", "SINEWAVE_ON", 38,40);
+       
         //
         DrawLine(Color.grey, 1, 3);
         materialEditor.RenderQueueField();
     }
-
-    private void DrawToggle(string inspectorDisplayName, string shaderKeyword, Action action)
+    
+    
+    
+    private void DrawToggle(string inspectorDisplayName, string shaderKeyword, int startProperty, int endProperty = 0,Action action=null)
     {
         bool toggle = oldKeyWords.Contains(shaderKeyword);
         bool ini = toggle;
@@ -61,7 +78,16 @@ public class MyShader : ShaderGUI
             targetMat.EnableKeyword(shaderKeyword);
             EditorGUILayout.BeginVertical(style);
             {
-                action();
+                for (int i = startProperty; i <(endProperty != 0 ? endProperty : startProperty) + 1 ; i++)
+                {
+                    DrawProperty(i);
+                }
+
+                if (action != null)
+                {
+                    action();    
+                }
+                
             }
             EditorGUILayout.EndVertical();
         }
@@ -69,6 +95,7 @@ public class MyShader : ShaderGUI
 
         EditorGUILayout.EndToggleGroup();
     }
+
     private void DrawProperty(int index, bool noReset = false)
     {
         MaterialProperty targetProperty = matProperties[index];

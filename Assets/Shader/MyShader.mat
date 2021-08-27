@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: MyShader
   m_Shader: {fileID: 4800000, guid: a7cca4243d74d6c448ba7eebecc3e01f, type: 3}
-  m_ShaderKeywords: PIXELATE_ON
+  m_ShaderKeywords: NEGATIVE_ON WAVETEST_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -25,10 +25,58 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _GlowPower: 0
+    - _BlurIntensity: 0
+    - _GlowPower: 0.688
+    - _GradBlend: 0.598
+    - _GradOffset: 0
+    - _GradREnd: 0.8
+    - _GradROffset: -0.68
+    - _GradRStart: 0.736
+    - _GradRadicalBlend: 0.196
+    - _GradXEnd: 1
+    - _GradXOffset: -0.21
+    - _GradXStart: 0
+    - _GradYEnd: 1
+    - _GradYOffset: -0.36
+    - _GradYStart: 0.49
     - _GreyScaleAmount: 0
     - _NegativeAmount: 1
-    - _PixelateSize: 64
+    - _OffsetUvX: 0
+    - _OffsetUvY: 0
+    - _Outline8Dir: 0
+    - _Outline8Directions: 0
+    - _OutlineAlpha: 0
+    - _OutlineGlow: 0
+    - _OutlineSize: 3
+    - _OutlineWidth: 0
+    - _PixelateSize: 25
+    - _ShadowAlpha: 0.532
+    - _ShadowX: 0.1
+    - _ShadowY: 0.1
+    - _SineAmp: 0.1
+    - _SineAmpf: 1
+    - _SineFrequency: 1
+    - _SineLength: 1
+    - _SineSpeed: 0.2
+    - _TestW: 0
+    - _TestX: 1
+    - _TestY: 1
+    - _TestZ: 1
+    - _WaveAmount: 25
+    - _WaveSpeed: 10.6
+    - _WaveStrength: 25
+    - _WaveX: 0.487
+    - _WaveY: 0.5
     m_Colors:
-    - _GlowColor: {r: 1, g: 1, b: 1, a: 1}
+    - _GlowColor: {r: 1, g: 0, b: 0, a: 1}
+    - _GradA: {r: 1, g: 0, b: 0, a: 1}
+    - _GradB: {r: 1, g: 0, b: 0, a: 1}
+    - _GradBottomLeftCol: {r: 0, g: 0.34212565, b: 1, a: 1}
+    - _GradBottomRightCol: {r: 1, g: 0, b: 0.6055646, a: 1}
+    - _GradRA: {r: 1, g: 0, b: 0, a: 1}
+    - _GradRB: {r: 0.53444123, g: 1, b: 0, a: 1}
+    - _GradTopLeftCol: {r: 0, g: 1, b: 0.26675177, a: 1}
+    - _GradTopRightCol: {r: 1, g: 0.77412665, b: 0, a: 1}
+    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _ShadowColor: {r: 0, g: 0.012712002, b: 1, a: 1}
   m_BuildTextureStacks: []
